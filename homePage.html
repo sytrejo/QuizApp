@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <!-- <meta name = "viewport"  content= "width-device-width, initial-scale = 1.0"> -->
+    <meta http-equiv = "X-UA-Compatible" content = "ie-edge">
+    <link href = "Assets/stylesheet.css" rel = "stylesheet">
+    <title> Quiz Application</title>
+</head>
+<body>
+    
+    <div class = "introduction" id="introduction">
+        <div class = "highScores">
+        <button onclick="location.href = '/highscores.html';" class="highScores" id= "highScores" style="float:left;">High Scores</button>
+        </div>
+        <div class="next" id="next">
+        <button class="nextBtn" id="nextBtn"style="float:right;">Next</button>
+        </div>
+        <h1> Quiz Challenge </h1>
+        <div class = "rules" id="rules" style ="text-align:center">
+            <h3>Rules of the Game</h3>
+            <p>1. You will be presented with several question to challenge your knowledge.</p>
+            <p>2. Once you select your answer, you can't go back.</p>
+            <p>3. If you select the wrong answer time will be deducted from the timer.</p>
+            <p>4. However, if you select the correct answer time will be added to your timer.</p>
+            <p> In the end, we hope you enjoy the game and get to see your name among the STARS!</p>
+            <div style ="text-align:center">
+                <button onclick="beginGame()" class="btn" id="startBtn" type="button">Start Game</button>
+            </div>
+        </div>
+
+        <div class="hidden" id="Qcontainer">
+            <div class = "timer" id="timer" style ="float: right;">
+                <h3>Timer</h3>
+                <p id="timerDisplay">00:90 seconds</p>
+            </div>
+            <div class="quizBody">
+                <div class="question" id="question">
+                    <h3 id="questionTitle">Question:</h3>
+                </div>
+                <div class = "answers" id="answers">
+                    <button class="btn">Answer A</button>
+                    <button class="btn">Answer B</button>
+                    <button class="btn">Answer C</button>
+                    <button class="btn">Answer D</button>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script defer src = "Assets/script.js"></script>
+</body>
+</html>

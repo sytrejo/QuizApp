@@ -1,0 +1,76 @@
+
+body{
+    padding-top:5em;
+    background-color: rgb(2, 52, 54);
+}
+
+.introduction{
+background-color: rgb(10, 110, 117);
+width:50vw;
+height: 50vh;
+margin:auto;
+}
+
+.timer{
+   margin-top: 3%;
+   list-style-type: none;
+   padding-right: 10%;
+   background-color: rgba(16, 65, 226, 0.683);
+}
+
+.highScores{
+    margin-top:3%;
+    list-style-type: none;
+} 
+
+.nextBtn{
+    margin-top:3%;
+    list-style-type: none;
+}
+
+.hidden{
+    display: none;
+}
+
+
+/* Styling for the HighScore page starts here*/
+
+.highScoresContainer{
+    background-color: rgb(102, 173, 176);
+    width:50vw;
+    height: 50vh;
+    margin:auto;  
+}
+
+.btn{
+    justify-content: center;
+    display: flex;
+    margin:auto;
+    text-align: center;
+    align-items: center; 
+}
+
+h1{
+    text-align: center;
+}
+/*Styling for Quiz questions*/
+
+h3{
+    text-align: center;
+}
+
+.answerBtn{
+    display:block;
+    text-align: center;
+    margin:auto;
+
+}
+
+.answerBtn:hover{
+    background-color: rgb(0, 21, 128);
+}
+
+
+.hide{
+    display:none;
+}
