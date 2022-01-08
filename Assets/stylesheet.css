@@ -12,10 +12,12 @@ margin:auto;
 }
 
 .timer{
-   margin-top: 3%;
+    text-align: center;
+   margin-top: auto;
    list-style-type: none;
-   padding-right: 10%;
    background-color: rgba(16, 65, 226, 0.683);
+   width:50vw;
+   height: 10vh;
 }
 
 .highScores{
@@ -73,4 +75,14 @@ h3{
 
 .hide{
     display:none;
+}
+
+/* styling for the Scoring */
+
+.scoreInput{
+    text-align: center;
+    background-color: rgb(102, 173, 176);
+    width:20vw;
+    height: 20vh;
+    margin:auto;  
 }

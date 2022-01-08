@@ -13,9 +13,6 @@
         <div class = "highScores">
         <button onclick="location.href = '/highscores.html';" class="highScores" id= "highScores" style="float:left;">High Scores</button>
         </div>
-        <div class="next" id="next">
-        <button class="nextBtn" id="nextBtn"style="float:right;">Next</button>
-        </div>
         <h1> Quiz Challenge </h1>
         <div class = "rules" id="rules" style ="text-align:center">
             <h3>Rules of the Game</h3>
@@ -25,15 +22,17 @@
             <p>4. However, if you select the correct answer time will be added to your timer.</p>
             <p> In the end, we hope you enjoy the game and get to see your name among the STARS!</p>
             <div style ="text-align:center">
-                <button onclick="beginGame()" class="btn" id="startBtn" type="button">Start Game</button>
+                <button  class="btn" id="startBtn" type="button">Start Game</button>
+            </div>
+        </div>
+        <div>
+            <div class = "timer" id="timer">
+                <h3>Timer</h3>
+                <p id="timer"><span class="timerDisplay">00:90 seconds</span></p>
             </div>
         </div>
 
         <div class="hidden" id="Qcontainer">
-            <div class = "timer" id="timer" style ="float: right;">
-                <h3>Timer</h3>
-                <p id="timerDisplay">00:90 seconds</p>
-            </div>
             <div class="quizBody">
                 <div class="question" id="question">
                     <h3 id="questionTitle">Question:</h3>
@@ -44,6 +43,14 @@
                     <button class="btn">Answer C</button>
                     <button class="btn">Answer D</button>
                 </div>
+            </div>
+            <div class="hidden" id="scoreInput">
+                <h1 class="finalScore">Your Score:<span class="total">100</span></h1>
+                <form class='form'>
+                    <h2>Please type in your initials:</h2>
+                    <input type="text" class="input-box" placeholder="AA">
+                    <button type="reset" class="save" id="save">Enter</button>
+                </form>
             </div>
             
         </div>

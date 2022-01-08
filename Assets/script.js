@@ -1,8 +1,15 @@
 const startBtn = document.getElementById('startBtn');
-const nextBtn = document.getElementById('nextBtn');
 const questionContainerElement = document.getElementById('Qcontainer')
-const questionElement = document.getElementById('question')
-const answerBtnElement  = document.getElementById('answers')
+const questionElement = document.querySelector('.question');
+const answerBtnElement  = document.querySelector('.answers');
+const scoreElement = document.getElementById('userScore')
+const timerElement = document.querySelector('.timerDisplay')
+
+let score = 25;
+let results = localStorage.getItem("results")
+var timer
+var timerCount = 90
+
 
 const questions = [
   {
@@ -69,45 +76,37 @@ let currentQuestionIndex
 
 startBtn.addEventListener('click',beginGame)
 
-nextBtn.addEventListener('click', () => {
-  currentQuestionIndex++
-  setNextQuestion()
-})
-
+//function begins the quiz  and hides the rules
 function beginGame(){
   $('#rules').addClass('hidden');
   $('#Qcontainer').removeClass('hidden');
   startBtn.classList.add('hide')
-  shuffledQuestions = questions.sort(() => Math.random() - .5)
-  currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
-  setNextQuestion()
+  showQuestion()
   timer()
 }
 
-function setNextQuestion (){
-  let currentQuestionIndex = 0
-  resetState()
-  showQuestion(shuffledQuestions[currentQuestionIndex])
-}
 
-function showQuestion(question){
-  questionElement.innerText = question.question
-  question.answers.forEach(answer => {
+function showQuestion(){
+  resetState()
+  shuffledQuestions = questions.sort(() => Math.random() - .5)
+  currentQuestionIndex = 0
+  questionElement.innerText = questions[0].question
+  questions[0].answers.forEach(answer => {
     const button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn')
-    if (answer.correct){
-      button.dataset.correct = answer.correct
+    if (answer.correct === true){
+      button.dataset.correct = 'true'
     }
     button.addEventListener('click', selectAnswer)
     answerBtnElement.appendChild(button)
   })
+  questions.shift()
 }
 
+
 function resetState(){
-  clearStatusClass(document.body)
-  nextBtn.classList.add('hide')
   while(answerBtnElement.firstChild){
     answerBtnElement.removeChild(answerBtnElement.firstChild)
   }
@@ -115,53 +114,116 @@ function resetState(){
 
 function selectAnswer(e){
   const selectedButton = e.target
-  const correct = selectedButton.dataset.correct
-  setStatusClass(document.body, correct)
-  Array.from(answerBtnElement.children).forEach(button => {
-    setStatusClass (button, button.dataset.correct)
-  })
-  if (shuffledQuestions.length > currentQuestionIndex + 1){
-    nextBtn.classList.remove('hide')
-  }else{
-    startBtn.innerText = 'Restart'
-    startBtn.classList.remove('hide')
+  if (selectedButton.dataset.correct == 'false'){
+    score -=5
+    scoreElement.textContent = score
+    if (question.length === 0){
+      endQuiz()
+    }else{
+      showQuestion()
+    }
+  } else{
+    timerCount -= 10
+    if (question.length == 0){
+      endQuiz()
+    }else if(timerCount === 0){
+      window.alert("Sorry! Your time is up!")
+      endQuiz()
+    }else{
+      showQuestion()
+    }
   }
-}
-
-function setStatusClass(element, correct) {
-  clearStatusClass(element)
-  if (correct) {
-    element.classList.add('correct')
-  } else {
-    element.classList.add('wrong')
-  }
-}
-
-function clearStatusClass(element) {
-  element.classList.remove('correct')
-  element.classList.remove('wrong')
 }
 
 
 
 // start the timer for 90 seconds
 function timer(){
-  var sec = 90;
-  var timer = setInterval(function(){
-    document.getElementById('timerDisplay').innerHTML='00:'+ sec + '  second(s)';
-    sec--;
-    if (sec<0){
-      clearInterval(timer);
+  timer = setInterval(function(){
+    timerCount--;
+    timerElement.textContent = timerCount
+    if (timerCount === 0){
+      window.alert("Sorry! Your time is up!")
+      endQuiz()
     }
   },1000);
 }
 
-function wrong(){
-  secondsLeft = secondsLeft - 5;
-  document.getElementById("correct").textContent = "false";
+function endQuiz(){
+  $('#Qcontainer').addClass('hidden');
+  $('#scoreInput').removeClass('hidden');
 }
 
-function right(){
-  document.getElementById("correct").textContent = "true";
-  secondsLeft= secondsLeft - 0
+
+const saveBtn = document.getElementById('save');
+saveBtn.addEventListener('click',save)
+function save(){
+  // console.log("Cool!")
+  location.href = 'scores.html'
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function wrong(){
+//   secondsLeft = secondsLeft - 5;
+//   document.getElementById("correct").textContent = "false";
+// }
+
+// function right(){
+//   document.getElementById("correct").textContent = "true";
+//   secondsLeft= secondsLeft - 0
+// }
+
+
+// nextBtn.addEventListener('click', () => {
+//   currentQuestionIndex++
+//   setNextQuestion()
+// })
+
+// function setNextQuestion (){
+//   let currentQuestionIndex = 0
+//   resetState()
+//   showQuestion(shuffledQuestions[currentQuestionIndex])
+// }
+
+// function setStatusClass(element, correct) {
+//   //   clearStatusClass(element)
+//   //   if (correct) {
+//   //     element.classList.add('correct')
+//   //   } else {
+//   //     element.classList.add('wrong')
+//   //   }
+//   // }
+  
+//   // function clearStatusClass(element) {
+//   //   element.classList.remove('correct')
+//   //   element.classList.remove('wrong')
+//   // }
+
+
+// function timer(){
+//   var sec = 90;
+//   timer = setInterval(function(){
+//     document.getElementById('timerDisplay').innerHTML= '' + sec +'  second(s)';
+//     sec--;
+//     if (sec === 0){
+//       window.alert("Sorry! Your time is up!")
+//     }
+//   },1000);
+// }
