@@ -154,8 +154,6 @@ function timer(){
       clearInterval(timer);
     }
   },1000);
-  wrong();
-  right();
 }
 
 function wrong(){
