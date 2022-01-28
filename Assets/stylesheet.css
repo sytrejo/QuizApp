@@ -1,11 +1,11 @@
 
 body{
     padding-top:5em;
-    background-color: rgb(2, 52, 54);
+    background-color: rgb(3, 35, 36);
 }
 
 .introduction{
-background-color: rgb(10, 110, 117);
+background-color: rgb(11, 144, 154);
 width:50vw;
 height: 50vh;
 margin:auto;
@@ -15,7 +15,7 @@ margin:auto;
     text-align: center;
    margin-top: auto;
    list-style-type: none;
-   background-color: rgba(16, 65, 226, 0.683);
+   background-color: rgba(57, 228, 177, 0.683);
    width:50vw;
    height: 10vh;
 }
